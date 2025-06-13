@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Secret Tower</title>
+
+    <!-- Google tag (gtag.js) -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-L06KLWGC80"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-L06KLWGC80');
+    </script> -->
+    <script type="module" crossorigin src="./assets/index-C4cql1jI.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-CPJ_a-CG.css">
+  </head>
+
+  <body>
+<script src="chs.js"></script>
+<script src="core.js"></script>
+    <div class="game-container">
+      <div class="resource-bar">
+        <div class="resource resource-gold"><span class="icon">💰</span><span id="gold"></span></div>
+        <div class="resource resource-crystal"><span class="icon">💎</span><span id="crystals"></span></div>
+        <div class="resource resource-souls"><span class="icon">👻</span><span id="souls"></span></div>
+        <!-- Cloud Save UI -->
+        <div class="cloud-save-bar">
+          <span id="cloud-save-status">Checking login...</span>
+          <button id="cloud-save-btn" disabled>Save to Cloud</button>
+          <button id="cloud-load-btn" disabled>Load from Cloud</button>
+        </div>
+      </div>
+
+      <div class="tab-buttons">
+        <button class="tab-btn active" data-tab="stats">Stats</button>
+        <button class="tab-btn" data-tab="training">Training</button>
+        <button class="tab-btn" data-tab="inventory">Inventory</button>
+        <button class="tab-btn" data-tab="skilltree">Skill Tree</button>
+        <button class="tab-btn" data-tab="crystalShop">Crystal Shop</button>
+        <button class="tab-btn" data-tab="soulshop">Soul Shop</button>
+        <button class="tab-btn" data-tab="quests">Quests</button>
+        <button class="tab-btn" data-tab="statistics">Statistics</button>
+        <button class="tab-btn" data-tab="options">Options</button>
+        <!-- <button class="tab-btn" data-tab="buildings">Buildings</button> -->
+      </div>
+
+      <div class="main-content">
+        <div class="game-panel">
+          <div class="tab-content">
+            <div id="stats" class="tab-panel active">
+              <div class="stats-grid"></div>
+            </div>
+
+            <div id="training" class="tab-panel">
+              <div id="gold-upgrades" class="sub-tab-panel active">
+                <div class="training-grid"></div>
+              </div>
+            </div>
+
+            <div id="crystalShop" class="tab-panel">
+              <div class="crystalShop-container">
+                <div class="crystalShop-upgrades-container">
+                  <!-- Crystal upgrades will be inserted here -->
+                </div>
+              </div>
+            </div>
+
+            <div id="inventory" class="tab-panel">
+              <div class="equipment-container">
+                <div class="equipment-layout">
+                  <div class="equipment-slots">
+                    <div class="equipment-slot" data-slot="head">
+                      <div class="slot-indicator">🪖</div>
+                    </div>
+                    <div class="equipment-slot" data-slot="amulet">
+                      <div class="slot-indicator">📿</div>
+                    </div>
+                    <div class="equipment-slot" data-slot="chest">
+                      <div class="slot-indicator">👕</div>
+                    </div>
+                    <div class="equipment-slot" data-slot="belt">
+                      <div class="slot-indicator">🎗️</div>
+                    </div>
+                    <div class="equipment-slot" data-slot="weapon">
+                      <div class="slot-indicator">⚔️</div>
+                    </div>
+                    <div class="equipment-slot" data-slot="offhand">
+                      <div class="slot-indicator">🛡️</div>
+                    </div>
+                    <div class="equipment-slot" data-slot="gloves">
+                      <div class="slot-indicator">🧤</div>
+                    </div>
+                    <div class="equipment-slot" data-slot="ring1">
+                      <div class="slot-indicator">💍</div>
+                    </div>
+                    <div class="equipment-slot" data-slot="legs">
+                      <div class="slot-indicator">👖</div>
+                    </div>
+                    <div class="equipment-slot" data-slot="ring2">
+                      <div class="slot-indicator">💍</div>
+                    </div>
+
+                    <div class="equipment-slot" data-slot="boots">
+                      <div class="slot-indicator">👢</div>
+                    </div>
+                  </div>
+                  <div class="character-preview">👤</div>
+                </div>
+                <div class="salvage-container">
+                  <!-- Add new buttons here -->
+                  <div class="inventory-tabs">
+                    <button id="items-tab" class="inventory-btn active">Items</button>
+                    <button id="materials-tab" class="inventory-btn">Materials</button>
+                  </div>
+                  <div id="sort-inventory" class="inventory-btn">Sort Items</div>
+
+                  <div class="salvage-dropdown">
+                    <button class="salvage-btn">
+                      Salvage
+                      <span class="dropdown-icon">▼</span>
+                    </button>
+                    <div class="salvage-options">
+                      <div data-rarity="NORMAL">Normal Items</div>
+                      <div data-rarity="MAGIC">Magic Items & Below</div>
+                      <div data-rarity="RARE">Rare Items & Below</div>
+                      <div data-rarity="UNIQUE">Unique Items & Below</div>
+                      <div data-rarity="LEGENDARY">Legendary Items & Below</div>
+                      <div data-rarity="MYTHIC">Mythic Items & Below</div>
+                    </div>
+                  </div>
+                  <div class="inventory-trash">🗑️</div>
+                </div>
+              </div>
+              <div class="inventory-grid">
+                <!-- Add a new grid for materials, hidden by default -->
+                <div class="materials-grid" style="display: none">
+                  <div class="materials-container"></div>
+                </div>
+                <div class="persistent-inventory">
+                  <!-- 20 slots (5x4) grid will be generated here -->
+                </div>
+                <div class="grid-container"></div>
+              </div>
+            </div>
+
+            <div id="skilltree" class="tab-panel">
+              <div id="class-selection" class="class-selection">
+                <!-- Will be populated by JavaScript -->
+              </div>
+              <div id="skill-tree-container" class="skill-tree-container hidden">
+                <!-- Will show skill tree after class selection -->
+              </div>
+            </div>
+            <div id="soulshop" class="tab-panel">
+              <div class="soulshop-container">
+                <div class="soul-shop-upgrades-container">
+                  <!-- Soul shop items will be rendered here -->
+                </div>
+              </div>
+            </div>
+            <div id="statistics" class="tab-panel">
+              <div class="statistics-container">
+                <div class="options-section">
+                  <div class="stats-display">
+                    <div id="stat-total-time-played"></div>
+                    <div id="stat-total-time-in-fights"></div>
+                    <div id="stat-highest-stage"></div>
+                    <div id="stat-total-gold"></div>
+                    <div id="stat-total-crystals"></div>
+                    <div id="stat-total-souls"></div>
+                    <div id="stat-items-found"></div>
+                    <div id="stat-enemies-killed"></div>
+                    <div id="stat-bosses-killed"></div>
+                    <div id="stat-highest-damage"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="options" class="tab-panel">
+              <div class="options-container">
+                <button id="reset-progress" class="danger-button">Reset All Progress</button>
+                <div class="options-section">
+                  <a
+                    href="https://discord.gg/pvCxff4s"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="discord-link"
+                    aria-label="Join our Discord"
+                  >
+                    <span>Join our Discord</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div id="quests" class="tab-panel">
+              <!-- Quests UI will be rendered here -->
+            </div>
+            <div id="buildings" class="tab-panel">
+              <!-- Buildings UI will be rendered here by JS -->
+            </div>
+          </div>
+        </div>
+
+        <div class="combat-panel">
+          <!-- Region Tabs -->
+          <div class="region-tabs">
+            <button data-region="explore" class="region-tab active">Explore</button>
+            <button data-region="arena" class="region-tab">Arena</button>
+          </div>
+          <div class="character-info">
+            <div id="character-avatar">🛡️</div>
+            <div class="character-resources">
+              <div id="character-name"></div>
+              <div class="character-hp-mana">
+                <div class="life-bar">
+                  <div id="life-fill"></div>
+                  <div id="life-text" class="life-text">100/100</div>
+                </div>
+                <div class="mana-bar">
+                  <div id="mana-fill" style="width: 100%"></div>
+                  <div id="mana-text" class="mana-text">50/50</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="action-bar">
+            <div class="skill-slots">
+              <!-- Skills will be added dynamically -->
+            </div>
+          </div>
+          <div class="character-controls">
+            <button id="start-btn">Fight</button>
+            <div id="stage-display">Stage: 1</div>
+          </div>
+
+          <div id="region-selector"></div>
+          <div id="region-panel-container"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="tooltip" class="tooltip hidden"></div>
+<!--客服 开始-->
+<script src="//g8hh.com.cn/static/js/jquery.min.js"></script>
+<link rel="stylesheet" href="//g8hh.com.cn/static/css/kf.css" type="text/css" media="screen" charset="utf-8">
+<script src="//g8hh.com.cn/static/js/kf.js"></script>
+<!-- 客服 结束 -->
+  </body>
+</html>
